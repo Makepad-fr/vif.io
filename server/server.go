@@ -6,7 +6,8 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
-	"strings"
+
+	usernameverifierservice "github.com/Makepad-fr/vif.io/services/username-verifier-service"
 )
 
 // Serve static files
@@ -14,18 +15,12 @@ func staticFileHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, filepath.Join("static", r.URL.Path))
 }
 
-// isTrimmedEmpty returns true if the given string is empty after trimmed
-func isTrimmedEmpty(s string) bool {
-	return len(strings.TrimSpace(s)) == 0
-}
-
 // Middleware function
 func checkIfUserExistsMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// TODO: Check if the user exists
 		username := r.URL.Path[1:] // remove the leading slash
 		log.Printf("Username %s", username)
-		if isTrimmedEmpty(username) || username != "kaanyagci" {
+		if usernameverifierservice.IsUserExists(username) {
 			log.Println("Landing page is not implemented yet")
 			// TODO: If the username does not exists in the path render the landing page template
 			// TODO: If the username does not exists but present in the path: Redirect to the a page that says "the username is available create yours
