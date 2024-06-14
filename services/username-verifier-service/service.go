@@ -8,5 +8,6 @@ func isTrimmedEmpty(s string) bool {
 }
 
 func IsUserExists(username string) bool {
-	return isTrimmedEmpty(username) || username != "kaanyagci"
+	// TODO: Complete function implementation
+	return !isTrimmedEmpty(username) && username == "kaanyagci"
 }
