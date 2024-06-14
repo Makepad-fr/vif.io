@@ -41,3 +41,32 @@ func IsUserExists(username string) bool {
 	// TODO: Complete function implementation
 	return !isTrimmedEmpty(username) && username == "kaanyagci"
 }
+
+func GetUserDetails(username string) model.UserDetails {
+	// TODO: Complete function definition
+	return model.UserDetails{
+		Username:       "kaanyagci",
+		Fullname:       "Kaan Yagci",
+		ProfilePicture: "https://via.placeholder.com/150",
+		Description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
+              hic, porro nemo sint ipsa numquam, velit a explicabo dicta iste
+              recusandae architecto voluptate repellat. Tempore quaerat impedit
+              dicta explicabo fugit.`,
+	}
+}
+
+func GetUserLinks(username string) []model.Link {
+	// TODO: Complete user links
+	return []model.Link{
+		{
+			Text: "My GitHub",
+			Url:  "/kaanyagci/gh",
+			Icon: "/static/images/github-mark.png",
+		},
+		{
+			Text: "My GitHub",
+			Url:  "/kaanyagci/gh",
+			Icon: "/static/images/github-mark.png",
+		},
+	}
+}

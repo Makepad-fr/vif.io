@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"path/filepath"
 
+	"github.com/Makepad-fr/vif.io/model"
 	usernameverifierservice "github.com/Makepad-fr/vif.io/services/username-verifier-service"
 )
 
@@ -35,6 +36,11 @@ func checkIfUserExistsMiddleware(next http.Handler) http.Handler {
 
 type httpHandlerFunc func(http.ResponseWriter, *http.Request)
 
+type userProfileTemplate struct {
+	Details model.UserDetails
+	Links   []model.Link
+}
+
 // Render template
 func existingUserProfileHandler(w http.ResponseWriter, r *http.Request) {
 	// Username should exists here
@@ -44,10 +50,13 @@ func existingUserProfileHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-
+	// TODO: Get user details from DB
 	// TODO: Update the map with a proper structure
-	data := map[string]string{
-		"Endpoint": username,
+	userProfile := usernameverifierservice.GetUserDetails(username)
+	links := usernameverifierservice.GetUserLinks(username)
+	data := userProfileTemplate{
+		Details: userProfile,
+		Links:   links,
 	}
 
 	err = tmpl.Execute(w, data)
