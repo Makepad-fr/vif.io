@@ -21,15 +21,15 @@ func checkIfUserExistsMiddleware(next http.Handler) http.Handler {
 		username := r.URL.Path[1:] // remove the leading slash
 		log.Printf("Username %s", username)
 		if usernameverifierservice.IsUserExists(username) {
-			log.Println("Landing page is not implemented yet")
-			// TODO: If the username does not exists in the path render the landing page template
-			// TODO: If the username does not exists but present in the path: Redirect to the a page that says "the username is available create yours
-			// http.Redirect(w, r, "/", http.StatusFound)
-			fmt.Fprintf(w, "hello world")
+			// If the user exists call the next handler
+			next.ServeHTTP(w, r)
 			return
 		}
-		// Call the next handler if the condition is met
-		next.ServeHTTP(w, r)
+		log.Println("Landing page is not implemented yet")
+		// TODO: If the username does not exists in the path render the landing page template
+		// TODO: If the username does not exists but present in the path: Redirect to the a page that says "the username is available create yours
+		// http.Redirect(w, r, "/", http.StatusFound)
+		fmt.Fprintf(w, "User does not exists")
 	})
 }
 
