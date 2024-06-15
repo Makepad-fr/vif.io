@@ -33,16 +33,16 @@ func init() {
 }
 
 // isTrimmedEmpty returns true if the given string is empty after trimmed
-func isTrimmedEmpty(s string) bool {
+func IsTrimmedEmpty(s string) bool {
 	return len(strings.TrimSpace(s)) == 0
 }
 
 func IsUserExists(username string) bool {
 	// TODO: Complete function implementation
-	return !isTrimmedEmpty(username) && username == "kaanyagci"
+	return !IsTrimmedEmpty(username) && username == "kaanyagci"
 }
 
-func GetUserDetails(username string) model.UserDetails {
+func GetUserDetails(username string) (model.UserDetails, bool) {
 	// TODO: Complete function definition
 	return model.UserDetails{
 		Username:       "kaanyagci",
@@ -52,7 +52,7 @@ func GetUserDetails(username string) model.UserDetails {
               hic, porro nemo sint ipsa numquam, velit a explicabo dicta iste
               recusandae architecto voluptate repellat. Tempore quaerat impedit
               dicta explicabo fugit.`,
-	}
+	}, true
 }
 
 func GetUserLinks(username string) []model.Link {
