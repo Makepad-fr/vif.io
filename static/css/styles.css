@@ -51,3 +51,30 @@ img.circle-radius {
     border-radius: 50%;
 
 }
+
+img.detailed-link-logo {
+    width: 20%;
+}
+
+a.detailed-link-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3%;
+}
+
+ul#profile-links-list {
+    list-style-type: none; /* Removes bullets from unordered lists */
+    padding: 0;            /* Removes default padding */
+    margin: 0;             /* Removes default margin */
+}
+
+ul#profile-links-list li {
+    list-style-type: none; /* Removes bullets from list items */
+}
+
+li#links-container-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

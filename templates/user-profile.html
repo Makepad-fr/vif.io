@@ -1,92 +1,51 @@
 <!DOCTYPE html>
 <!-- TODO: Put the template variable for the language -->
 <html lang="en">
-  <!-- TODO: Check if we can execute Go functions from Go templats? -->
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/static/css/styles.css" />
-  </head>
-  <body>
-    <main class="full-page-container-with-footer flex centered-flex">
-      <div id="container">
-        <!-- TODO: Put the template variable for the profile picture src -->
-        <img
-          src="https://via.placeholder.com/150"
-          alt="Profile Picture"
-          id="profile-picture"
-          class="circle-radius"
-        />
-        <div id="user-information-container">
-          <article id="user-details">
-            <!-- TODO: Put the template variable for user full-name -->
-            <h1 id="user-full-name">Kaan Yagci</h1>
-            <!-- TODO: Put the template variable for user bio / description -->
-            <p id="user-bio">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-              hic, porro nemo sint ipsa numquam, velit a explicabo dicta iste
-              recusandae architecto voluptate repellat. Tempore quaerat impedit
-              dicta explicabo fugit.
-            </p>
-          </article>
-        </div>
-        <div id="links-container">
-          <ul id="profile-links-list">
-            <li id="links-container-header">
-              <button id="collapse-expand-button">Collable / Expand</button>
-            </li>
-            <!-- TODO: Replace with a for loop Go template -->
-            <li class="detailed-link-card">
-              <a href="https://github.com">
-                <img src="" alt="" class="detailed-link-logo" />
-                <span class="detailed-link-title">GitHub</span>
-              </a>
-            </li>
-            <li class="detailed-link-card">
-              <img src="" alt="" class="detailed-link-logo" />
-              <span class="detailed-link-title">GitHub</span>
-            </li>
-            <li class="detailed-link-card">
-              <img src="" alt="" class="detailed-link-logo" />
-              <span class="detailed-link-title">GitHub</span>
-            </li>
-            <li class="detailed-link-card">
-              <img src="" alt="" class="detailed-link-logo" />
-              <span class="detailed-link-title">GitHub</span>
-            </li>
-            <li class="detailed-link-card">
-              <img src="" alt="" class="detailed-link-logo" />
-              <span class="detailed-link-title">GitHub</span>
-            </li>
-            <li class="detailed-link-card">
-              <img src="" alt="" class="detailed-link-logo" />
-              <span class="detailed-link-title">GitHub</span>
-            </li>
-            <li class="detailed-link-card">
-              <img src="" alt="" class="detailed-link-logo" />
-              <span class="detailed-link-title">GitHub</span>
-            </li>
-            <li class="detailed-link-card">
-              <img src="" alt="" class="detailed-link-logo" />
-              <span class="detailed-link-title">GitHub</span>
-            </li>
-            <li class="detailed-link-card">
-              <img src="" alt="" class="detailed-link-logo" />
-              <span class="detailed-link-title">GitHub</span>
-            </li>
-            <li class="detailed-link-card">
-              <img src="" alt="" class="detailed-link-logo" />
-              <span class="detailed-link-title">GitHub</span>
-            </li>
-            <li class="detailed-link-card">
-              <img src="" alt="" class="detailed-link-logo" />
-              <span class="detailed-link-title">GitHub</span>
-            </li>
-          </ul>
-        </div>
+<!-- TODO: Check if we can execute Go functions from Go templats? -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+
+<body>
+  <main class="full-page-container-with-footer flex centered-flex">
+    <div id="container">
+      <!-- TODO: Put the template variable for the profile picture src -->
+      <img src="{{ .Details.ProfilePicture }}" alt="Profile Picture" id="profile-picture" class="circle-radius" />
+      <div id="user-information-container">
+        <article id="user-details">
+          <!-- TODO: Put the template variable for user full-name -->
+          <h1 id="user-full-name">{{ .Details.Fullname }}</h1>
+          <!-- TODO: Put the template variable for user bio / description -->
+          <p id="user-bio">
+            {{ .Details.Description }}
+          </p>
+        </article>
       </div>
-    </main>
-    <footer>Powered by vif.io</footer>
-  </body>
+      <div id="links-container">
+        <ul id="profile-links-list">
+          <!-- TODO: The header should be shown only if the user is logged in -->
+          <!-- <li id="links-container-header">
+            <button id="collapse-expand-button">Collable / Expand</button>
+          </li> -->
+          <!-- TODO: Replace with a for loop Go template -->
+          {{ range .Links }}
+          <li class="link-card">
+            <a href="{{ .Url }}" class="detailed-link-card">
+              <!-- TODO: Add CSS for icon -->
+              <img src="{{ .Icon }}" alt="{{ .Text }}" class="detailed-link-logo" />
+              <span class="detailed-link-title">{{ .Text }}</span>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </main>
+  <footer>Powered by vif.io</footer>
+</body>
+
 </html>
