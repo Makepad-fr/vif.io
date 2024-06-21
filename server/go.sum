@@ -2,6 +2,14 @@ github.com/ClickHouse/clickhouse-go v1.5.4 h1:cKjXeYLNWVJIx2J1K6H2CqyRmfwVJVY1OV
 github.com/ClickHouse/clickhouse-go v1.5.4/go.mod h1:EaI/sW7Azgz9UATzd5ZdZHRUhHgv5+JMS9NSr2smCJI=
 github.com/Makepad-fr/gam v1.0.0-rc2 h1:p6xNyyKYAjj46Abk56WeSwquPd31mzv/6rpVt322xXE=
 github.com/Makepad-fr/gam v1.0.0-rc2/go.mod h1:t9+KNCB63Z+k3NJ+SGX1chLp5HT7G0JSha8nP2gPneU=
+github.com/Makepad-fr/gam v1.0.0-rc3 h1:QVf7mt/jsy/Dt6jVM35RsqiXYZitiFnlZKKKzBw5cTE=
+github.com/Makepad-fr/gam v1.0.0-rc3/go.mod h1:t9+KNCB63Z+k3NJ+SGX1chLp5HT7G0JSha8nP2gPneU=
+github.com/Makepad-fr/gam v1.0.0-rc4 h1:RSTen6vG0GnfUj9XUBrs6YojcbSUrMHWvsC+Ko1zhA8=
+github.com/Makepad-fr/gam v1.0.0-rc4/go.mod h1:t9+KNCB63Z+k3NJ+SGX1chLp5HT7G0JSha8nP2gPneU=
+github.com/Makepad-fr/gam v1.0.0-rc5 h1:0EkBJ+82kAspt7aciSsaS2FA5E190dAeiRZQUaYSeKw=
+github.com/Makepad-fr/gam v1.0.0-rc5/go.mod h1:t9+KNCB63Z+k3NJ+SGX1chLp5HT7G0JSha8nP2gPneU=
+github.com/Makepad-fr/gam v1.0.0 h1:S42ov92vwAPidlSF/s8J6ArRvnCq1W/npNe09GMmuHI=
+github.com/Makepad-fr/gam v1.0.0/go.mod h1:t9+KNCB63Z+k3NJ+SGX1chLp5HT7G0JSha8nP2gPneU=
 github.com/bkaradzic/go-lz4 v1.0.0/go.mod h1:0YdlkowM3VswSROI7qDxhRvJ3sLhlFrRRwjwegp5jy4=
 github.com/cloudflare/golz4 v0.0.0-20150217214814-ef862a3cdc58 h1:F1EaeKL/ta07PY/k9Os/UFtwERei2/XzGemhpGnBKNg=
 github.com/cloudflare/golz4 v0.0.0-20150217214814-ef862a3cdc58/go.mod h1:EOBUe0h4xcZ5GoxqC5SDxFQ8gwyZPKQoEzownBlhI80=

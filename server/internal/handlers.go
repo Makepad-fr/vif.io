@@ -19,7 +19,8 @@ func trimTrailingSlashes(s string) string {
 
 func CreateRootHandler() http.Handler {
 	log.Println("Creating root handelr")
-	g, err := gam.Init("custom_user", "custom_passoword", "clickhouse", "9000", "custom_database", "usage_analytics", true, true)
+	// TODO: Move username, passoword, hostname, port, database name and table name to environment variables
+	g, err := gam.Init("custom_user", "custom_password", "clickhouse", "9000", "custom_database", "usage_analytics", true, true)
 	if err != nil {
 		log.Println("Error while intiaing gam")
 		log.Fatalf("Error while initialising analytics middleware instance: %v", err)
