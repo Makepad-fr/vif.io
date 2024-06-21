@@ -6,6 +6,7 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/Makepad-fr/gam"
 	"github.com/Makepad-fr/vif.io/model"
 	usernameverifierservice "github.com/Makepad-fr/vif.io/services/username-verifier-service"
 )
@@ -16,10 +17,19 @@ func trimTrailingSlashes(s string) string {
 	return strings.TrimSuffix(strings.TrimPrefix(s, slash), slash)
 }
 
-// TODO: Add logging middleware
+func CreateRootHandler() http.Handler {
+	log.Println("Creating root handelr")
+	// TODO: Move username, passoword, hostname, port, database name and table name to environment variables
+	g, err := gam.Init("custom_user", "custom_password", "clickhouse", "9000", "custom_database", "usage_analytics", true, true)
+	if err != nil {
+		log.Println("Error while intiaing gam")
+		log.Fatalf("Error while initialising analytics middleware instance: %v", err)
+	}
+	return g.Middleware(LoggingMiddleWare(http.HandlerFunc(handleRootPath)))
+}
 
 // Middleware function
-func HandleRootPath(w http.ResponseWriter, r *http.Request) {
+func handleRootPath(w http.ResponseWriter, r *http.Request) {
 	parsedPath := strings.Split(trimTrailingSlashes(r.URL.Path), "/")
 	l := len(parsedPath)
 	switch {
