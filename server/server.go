@@ -10,15 +10,20 @@ import (
 func main() {
 	// Serve static files
 	fs := http.FileServer(http.Dir("./static"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
+	mux := http.NewServeMux()
 
-	// Serve HTML templates
-	http.Handle("/", internal.LoggingMiddleWare(internal.HandleRootPath))
+	mux.Handle("/static/", http.StripPrefix("/static/", fs))
 
+	mux.Handle("/", internal.CreateRootHandler())
+
+	// TODO: MAke port number from envnrionment variables
+	server := &http.Server{
+		Addr:    ":4321",
+		Handler: mux,
+	}
 	// Start the server
-	// TODO: Make port number from envnrionment variables
 	fmt.Println("Starting server at :4321")
-	err := http.ListenAndServe(":4321", nil)
+	err := server.ListenAndServe()
 	if err != nil {
 		fmt.Println("Error starting server:", err)
 	}

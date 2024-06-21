@@ -1,0 +1,21 @@
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    container_name: clickhouse
+    volumes:
+      - ./ch_data:/var/lib/clickhouse
+      - ./ch_logs:/var/log/clickhouse-server
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+      - "9009:9009"
+    environment:
+      - CLICKHOUSE_USER=custom_user
+      - CLICKHOUSE_PASSWORD=custom_password
+      - CLICKHOUSE_DB=custom_database
+  vif:
+    depends_on:
+      - clickhouse
+    build: .
+    ports:
+      - 4321:4321    

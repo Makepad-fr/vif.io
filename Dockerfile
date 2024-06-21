@@ -7,6 +7,7 @@ COPY go.work go.work
 
 COPY server/ ./server/
 COPY services/ ./services/
+COPY model/ ./model/
 
 ENV CGO_ENABLED=0
 
